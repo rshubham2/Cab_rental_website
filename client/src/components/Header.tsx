@@ -101,11 +101,13 @@ const Header = () => {
                   )}
                 </div>
               ) : (
-                <Link key={link.label} href={link.href || "/"}>
-                  <a className={`text-foreground hover:text-primary font-medium transition ${location === link.href ? 'text-primary' : ''}`}>
-                    {link.label}
-                  </a>
-                </Link>
+                <div key={link.label}>
+                  <Link href={link.href || "/"}>
+                    <span className={`text-foreground hover:text-primary font-medium transition cursor-pointer ${location === link.href ? 'text-primary' : ''}`}>
+                      {link.label}
+                    </span>
+                  </Link>
+                </div>
               )
             ))}
           </div>
@@ -154,27 +156,31 @@ const Header = () => {
                   {fleetDropdownOpen && (
                     <div className="pl-4 mt-2 border-l-2 border-gray-200 space-y-2">
                       {link.dropdownItems?.map((item) => (
-                        <Link key={item.label} href={item.href}>
-                          <a 
-                            className="block text-sm text-foreground hover:text-primary transition py-1"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {item.label}
-                          </a>
-                        </Link>
+                        <div key={item.label}>
+                          <Link href={item.href}>
+                            <span 
+                              className="block text-sm text-foreground hover:text-primary transition py-1 cursor-pointer" 
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {item.label}
+                            </span>
+                          </Link>
+                        </div>
                       ))}
                     </div>
                   )}
                 </div>
               ) : (
-                <Link key={link.label} href={link.href || "/"}>
-                  <a 
-                    className={`text-foreground hover:text-primary font-medium transition py-2 ${location === link.href ? 'text-primary' : ''}`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                </Link>
+                <div key={link.label}>
+                  <Link href={link.href || "/"}>
+                    <span 
+                      className={`block text-foreground hover:text-primary font-medium transition py-2 cursor-pointer ${location === link.href ? 'text-primary' : ''}`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </span>
+                  </Link>
+                </div>
               )
             ))}
             <a href="tel:9045450000" className="flex items-center text-secondary font-medium py-2">
