@@ -46,11 +46,11 @@ const Footer = () => {
           <div>
             <h3 className="font-sans font-semibold text-xl mb-4">Our Services</h3>
             <ul className="space-y-2">
-              <li><Link href="/#services"><a className="text-gray-300 hover:text-white transition">Outstation Trips</a></Link></li>
-              <li><Link href="/#services"><a className="text-gray-300 hover:text-white transition">Local Travel</a></Link></li>
-              <li><Link href="/#services"><a className="text-gray-300 hover:text-white transition">Airport Transfers</a></Link></li>
-              <li><Link href="/#services"><a className="text-gray-300 hover:text-white transition">One-Way Drops</a></Link></li>
-              <li><Link href="/#services"><a className="text-gray-300 hover:text-white transition">Corporate Travel</a></Link></li>
+              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Outstation Trips</span></Link></li>
+              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Local Travel</span></Link></li>
+              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Airport Transfers</span></Link></li>
+              <li><Link href="/one-way-fares"><span className="text-gray-300 hover:text-white transition cursor-pointer">One-Way Drops</span></Link></li>
+              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Corporate Travel</span></Link></li>
             </ul>
           </div>
           
@@ -68,7 +68,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-primary" />
-                <a href="mailto:info@roadtripindia.com" className="text-gray-300 hover:text-white transition">info@roadtripindia.com</a>
+                <a href="mailto:info@gauthamtoursandtravels.com" className="text-gray-300 hover:text-white transition">info@gauthamtoursandtravels.com</a>
               </li>
             </ul>
           </div>
@@ -78,7 +78,7 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} RoadTrip India. All rights reserved.
+            &copy; {currentYear} Gautham Tours and Travels. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-4 text-sm">
             <a href="#" className="text-gray-400 hover:text-white transition">Terms & Conditions</a>

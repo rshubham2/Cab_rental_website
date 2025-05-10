@@ -43,7 +43,7 @@ const Hero = () => {
   const form = useForm<QuickBookingValues>({
     resolver: zodResolver(quickBookingSchema),
     defaultValues: {
-      tripType: "outstation",
+      tripType: "outstation-roundtrip",
       from: "",
       to: "",
       startDate: "",
@@ -102,9 +102,9 @@ const Hero = () => {
             <p className="text-lg md:text-xl mb-8">Experience premium chauffeur-driven cab services across 2000+ cities in India. Travel with comfort, flexibility, and peace of mind.</p>
             <div className="flex flex-wrap gap-4">
               <Link href="/booking">
-                <a className="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition shadow-lg inline-block">
+                <span className="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition shadow-lg inline-block cursor-pointer">
                   Book Your Cab Now
-                </a>
+                </span>
               </Link>
               <a href="tel:9045450000" className="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-6 rounded-lg transition shadow-lg flex items-center">
                 <Phone className="h-4 w-4 mr-2" />
@@ -134,10 +134,12 @@ const Hero = () => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="outstation">Outstation Trip</SelectItem>
-                            <SelectItem value="local">Local Travel</SelectItem>
-                            <SelectItem value="airport">Airport Transfer</SelectItem>
-                            <SelectItem value="oneway">One-Way Drop</SelectItem>
+                            <SelectItem value="outstation-roundtrip">Outstation Round Trip</SelectItem>
+                            <SelectItem value="outstation-oneway">Outstation One-Way</SelectItem>
+                            <SelectItem value="local">Local City Travel</SelectItem>
+                            <SelectItem value="airport-pickup">Airport Pickup</SelectItem>
+                            <SelectItem value="airport-drop">Airport Drop</SelectItem>
+                            <SelectItem value="rental">Hourly/Daily Rental</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
