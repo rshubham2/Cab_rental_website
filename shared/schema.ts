@@ -27,6 +27,7 @@ export const bookings = pgTable("bookings", {
   returnDate: date("return_date"),
   carType: text("car_type").notNull(),
   contactNumber: text("contact_number").notNull(),
+  email: text("email"),
   additionalRequirements: text("additional_requirements"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });

@@ -2,7 +2,7 @@ import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertBookingSchema, insertContactSchema } from "@shared/schema";
-import { sendBookingNotification, sendContactNotification } from "./emailService";
+import { sendBookingEmail, sendContactEmail, sendCustomerBookingConfirmation } from "./mailer-fixed";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // put application routes here
@@ -16,13 +16,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send notification email to owner
       try {
-        await sendBookingNotification(booking);
+        const emailResult = await sendBookingEmail(booking);
+        
+        // If customer email is provided, send a confirmation email
+        if (req.body.email) {
+          await sendCustomerBookingConfirmation(booking, req.body.email);
+        }
+        
+        // If we're using a test account, return the preview URL
+        if (emailResult.previewUrl) {
+          return res.status(201).json({ 
+            success: true, 
+            booking, 
+            emailSent: true,
+            emailPreviewUrl: emailResult.previewUrl
+          });
+        }
       } catch (emailError) {
         console.error("Failed to send booking notification email:", emailError);
         // Continue with the response even if email fails
       }
       
-      res.status(201).json({ success: true, booking });
+      res.status(201).json({ 
+        success: true, 
+        booking,
+        message: "Booking created successfully! We'll contact you shortly to confirm details."
+      });
     } catch (error) {
       console.error("Booking creation error:", error);
       res.status(400).json({ 
@@ -54,13 +73,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send notification email to owner
       try {
-        await sendContactNotification(contact);
+        const emailResult = await sendContactEmail(contact);
+        
+        // If we're using a test account, return the preview URL
+        if (emailResult.previewUrl) {
+          return res.status(201).json({ 
+            success: true, 
+            contact, 
+            emailSent: true,
+            emailPreviewUrl: emailResult.previewUrl
+          });
+        }
       } catch (emailError) {
         console.error("Failed to send contact notification email:", emailError);
         // Continue with the response even if email fails
       }
       
-      res.status(201).json({ success: true, contact });
+      res.status(201).json({ 
+        success: true, 
+        contact,
+        message: "Your message has been sent successfully! We'll get back to you soon."
+      });
     } catch (error) {
       console.error("Contact creation error:", error);
       res.status(400).json({ 
