@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="font-sans font-semibold text-xl mb-4">RoadTripIndia</h3>
+            <h3 className="font-sans font-semibold text-xl mb-4">Gautham Tours and Travels</h3>
             <p className="text-gray-300 mb-4">
               Premium chauffeur-driven cab services across 2000+ cities in India. Making road trips comfortable, flexible, and enjoyable.
             </p>
@@ -34,11 +34,11 @@ const Footer = () => {
           <div>
             <h3 className="font-sans font-semibold text-xl mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/"><a className="text-gray-300 hover:text-white transition">Home</a></Link></li>
-              <li><Link href="/#about"><a className="text-gray-300 hover:text-white transition">About Us</a></Link></li>
-              <li><Link href="/#services"><a className="text-gray-300 hover:text-white transition">Services</a></Link></li>
-              <li><Link href="/booking"><a className="text-gray-300 hover:text-white transition">Book Now</a></Link></li>
-              <li><Link href="/contact"><a className="text-gray-300 hover:text-white transition">Contact Us</a></Link></li>
+              <li><Link href="/"><span className="text-gray-300 hover:text-white transition cursor-pointer">Home</span></Link></li>
+              <li><Link href="/#about"><span className="text-gray-300 hover:text-white transition cursor-pointer">About Us</span></Link></li>
+              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Services</span></Link></li>
+              <li><Link href="/booking"><span className="text-gray-300 hover:text-white transition cursor-pointer">Book Now</span></Link></li>
+              <li><Link href="/contact"><span className="text-gray-300 hover:text-white transition cursor-pointer">Contact Us</span></Link></li>
             </ul>
           </div>
           

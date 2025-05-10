@@ -42,6 +42,7 @@ const Header = () => {
     { href: "/", label: "Home" },
     { href: "/#about", label: "About" },
     { href: "/#services", label: "Services" },
+    { href: "/one-way-fares", label: "One-Way Fares" },
     { 
       label: "Rental Fleets", 
       hasDropdown: true,
@@ -65,11 +66,11 @@ const Header = () => {
       <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <a className="flex items-center cursor-pointer">
+          <span className="flex items-center cursor-pointer">
             <span className="text-2xl font-bold font-sans text-primary">
-              RoadTrip<span className="text-secondary">India</span>
+              Gautham<span className="text-secondary"> Tours and Travels</span>
             </span>
-          </a>
+          </span>
         </Link>
         
         {/* Desktop Navigation */}
@@ -91,9 +92,9 @@ const Header = () => {
                       <div className="py-2">
                         {link.dropdownItems?.map((item) => (
                           <Link key={item.label} href={item.href}>
-                            <a className="block px-4 py-2 text-sm text-foreground hover:bg-gray-100 hover:text-primary transition">
+                            <span className="block px-4 py-2 text-sm text-foreground hover:bg-gray-100 hover:text-primary transition cursor-pointer">
                               {item.label}
-                            </a>
+                            </span>
                           </Link>
                         ))}
                       </div>
