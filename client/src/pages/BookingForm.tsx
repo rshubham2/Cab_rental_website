@@ -31,6 +31,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const bookingFormSchema = insertBookingSchema.extend({
   startDate: z.string().min(1, "Start date is required"),
   returnDate: z.string().optional(),
+  email: z.string().email("Please enter a valid email address").optional(),
 });
 
 type BookingFormValues = z.infer<typeof bookingFormSchema>;
@@ -48,6 +49,7 @@ const BookingForm = () => {
       returnDate: "",
       carType: "",
       contactNumber: "",
+      email: "",
       additionalRequirements: "",
     },
   });
@@ -217,6 +219,27 @@ const BookingForm = () => {
                     )}
                   />
                 </div>
+
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email Address</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="email"
+                          placeholder="Enter your email for booking confirmation" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        We'll send your booking confirmation to this email
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 <FormField
                   control={form.control}

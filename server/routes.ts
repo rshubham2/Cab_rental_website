@@ -19,8 +19,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const emailResult = await sendBookingEmail(booking);
         
         // If customer email is provided, send a confirmation email
-        if (req.body.email) {
-          await sendCustomerBookingConfirmation(booking, req.body.email);
+        if (booking.email) {
+          try {
+            await sendCustomerBookingConfirmation(booking, booking.email);
+            console.log("Customer booking confirmation sent to:", booking.email);
+          } catch (customerEmailError) {
+            console.error("Failed to send customer confirmation email:", customerEmailError);
+            // Continue with the process even if customer email fails
+          }
         }
         
         // If we're using a test account, return the preview URL
