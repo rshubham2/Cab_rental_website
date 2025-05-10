@@ -1,0 +1,27 @@
+Thanks for the clarification! Here's the **revised prompt** for an **AI website developer** using **Garutham Tours and Travels** instead of Savaari:
+
+---
+
+**Prompt for AI Website Developer:**
+
+"Design a responsive and professional section of a website to display car rental options in Mumbai for *Garutham Tours and Travels*. The section should begin with a short introduction and feature a well-structured layout—either in table or card format—showcasing different categories of rental vehicles. Each entry should display the vehicle type, example models, seating capacity, and ideal use case. Maintain a clean design with modern fonts, icons, and consistent spacing. The design should be mobile-friendly.
+
+**Intro Text:**
+'At Garutham Tours and Travels, we offer a wide range of premium car rental options in Mumbai. Our fleet includes compact hatchbacks, comfortable sedans, SUVs, and Innova cars—all air-conditioned, regularly serviced, and well-maintained. Whether you're planning a weekend trip, group outing, or a special occasion, we have the right ride for you, including tempo travellers and luxury car rentals.'
+
+**Car Categories Data:**
+
+| Car Type          | Models Include            | Passengers | Ideal For                                  |
+| ----------------- | ------------------------- | ---------- | ------------------------------------------ |
+| AC Sedans         | Etios, Amaze, Dzire etc.  | 4 Pax      | Comfortable for small families             |
+| AC Hatchbacks     | Indica, Ritz, Micra etc.  | 4 Pax      | Budget-friendly trips                      |
+| AC SUVs & MUVs    | Innova, Ertiga, Xylo etc. | 6–7 Pax    | Long-distance trips & large groups         |
+| Premium SUVs      | Innova Crysta             | 6–7 Pax    | Premium trips for a group of 6 to 7 people |
+| AC Minivans       | Tempo Travellers          | 12 Pax     | Large groups of friends & families         |
+| Luxury Car Rental | Corolla, Camry, BMW etc.  | 4 Pax      | Pampering yourself with luxury             |
+
+Add a 'Book Now' button for each option, and optionally include vehicle icons or images to enhance user engagement."
+
+---
+
+Would you like a visual layout mockup or HTML code for this as well?

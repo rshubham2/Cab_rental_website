@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import BookingForm from "@/pages/BookingForm";
 import ContactPage from "@/pages/ContactPage";
+import OneWayFares from "@/pages/OneWayFares";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/booking" component={BookingForm} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/one-way-fares" component={OneWayFares} />
       <Route component={NotFound} />
     </Switch>
   );

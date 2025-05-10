@@ -1,0 +1,77 @@
+Here’s a **comprehensive and structured prompt** for an **AI website developer** to create a feature-rich travel/tourism landing page for **Garutham Tours and Travels**, based on your content:
+
+---
+
+### **Prompt for AI Website Developer:**
+
+**Goal:** Build a modern, mobile-friendly, content-rich landing page for *Garutham Tours and Travels* focused on car rental services, local exploration, and outstation travel from Mumbai. Use clean typography, organized sections, imagery/icons, and CTAs like “Book Now” to guide users.
+
+---
+
+### **Sections to Include:**
+
+#### 1. **Hero Section**
+
+* Headline: “Ride with Us Around the Popular Destinations in Mumbai”
+* Subheading: “Book comfortable, air-conditioned cars with Garutham Tours and Travels and enjoy your Mumbai journey your way.”
+* CTA Button: “Book Your Ride Now”
+
+---
+
+#### 2. **Popular Pickup Points in Mumbai**
+
+Format as cards or grid blocks:
+
+* **Mumbai Airport** (Chhatrapati Shivaji International Airport)
+* **Railway Stations**: Mumbai Central, CST (Victoria Terminus), Lokmanya Tilak Terminus, Bandra Terminus, Dadar
+* **Popular Localities**: Bandra, Borivali, Thane
+
+---
+
+#### 3. **Local Sightseeing Recommendations**
+
+Add a content block with bullet points or numbered list:
+
+* Gateway of India
+* Crawford Market & Colaba Causeway
+* Marine Drive (Queen’s Necklace)
+* Elephanta Caves (ferry ride)
+* Mumbai street food (vada pav, pav bhaji, bhel puri)
+* Art Deco and Gothic buildings
+* Nightlife: Tryst, Trilogy, The Bar Stock Exchange
+
+---
+
+#### 4. **Places to Visit Near Mumbai**
+
+Use a table or card-style layout to display this data:
+
+| **Place**     | **Distance & Time** | **Highlights**                                                            |
+| ------------- | ------------------- | ------------------------------------------------------------------------- |
+| Mahabaleshwar | 270 Km – 6 hrs      | Scenic drive, lush forests, waterfalls, hill stations                     |
+| Daman         | 198 Km – 5.5 hrs    | Views of Western Ghats, Arabian Sea, local snacks like sev puri, vada pav |
+| Shirdi        | 246 Km – 5.5 hrs    | Bhimashankar Jyotirlinga, serene drive through the Ghats                  |
+| Silvassa      | 166 Km – 4.5 hrs    | Riverside scenery, calm journey along Mumbai-Ahmedabad highway            |
+
+---
+
+#### 5. **Travel Tips & Essential Info**
+
+Display this as a 3-column grid or collapsible accordion:
+
+* **Climate**: Tropical weather, best to check forecasts before travel. Heavy rains from June–September.
+* **Transportation**: Local trains, buses, taxis, and self-drive car rentals are available. Trains are cheap but crowded.
+* **Safety**: Avoid carrying valuables, be alert in crowds, avoid isolated areas at night.
+
+---
+
+### **Design Notes:**
+
+* Use icons for weather, safety, and transport in the Travel Tips section.
+* Include high-quality images of key destinations.
+* Stick to a color palette that evokes trust (e.g., blue, white, yellow).
+* Add a sticky “Book Now” button or floating CTA on mobile.
+
+---
+
+Would you like this turned into a **complete HTML + TailwindCSS** layout or a **Figma design prompt** next?
