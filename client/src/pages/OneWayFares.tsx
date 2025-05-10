@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'wouter';
 import { MapPin, ArrowRight, Car } from "lucide-react";
 
-// Data for Mumbai one-way routes
+// Data for Mumbai one-way routes within Maharashtra
 const oneWayRoutes = [
   {
     from: "Mumbai",
@@ -43,12 +43,21 @@ const oneWayRoutes = [
   },
   {
     from: "Mumbai",
-    to: "Goa",
-    distance: "590 km",
-    duration: "10 hours",
-    sedanFare: "₹10,353",
-    suvFare: "₹12,921",
-    image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+    to: "Alibaug",
+    distance: "95 km",
+    duration: "2.5 hours",
+    sedanFare: "₹2,850",
+    suvFare: "₹3,450",
+    image: "https://images.unsplash.com/photo-1530077471762-3cef45f920cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    from: "Mumbai",
+    to: "Nashik",
+    distance: "167 km",
+    duration: "3.5 hours",
+    sedanFare: "₹3,380",
+    suvFare: "₹4,250",
+    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
   }
 ];
 
@@ -56,16 +65,16 @@ const OneWayFares = () => {
   return (
     <main className="min-h-screen">
       <Helmet>
-        <title>One-Way Cab Fares from Mumbai | Gautham Tours and Travels</title>
-        <meta name="description" content="Check out our competitive one-way cab fares from Mumbai to popular destinations like Pune, Lonavala, Mahabaleshwar, Imagica, and Goa. Choose between sedan and SUV options." />
+        <title>One-Way Cab Fares from Mumbai Across Maharashtra | Gautham Tours and Travels</title>
+        <meta name="description" content="Check out our competitive one-way cab fares from Mumbai to popular destinations across Maharashtra including Pune, Lonavala, Mahabaleshwar, Nashik, and Alibaug. Choose between sedan and SUV options." />
       </Helmet>
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary/90 to-primary text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">One-Way Cab Fares from Mumbai</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">One-Way Cab Fares Across Maharashtra</h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-            Affordable and fixed prices for one-way trips to popular destinations near Mumbai. 
+            Affordable and fixed prices for one-way trips to popular destinations throughout Maharashtra. 
             No hidden charges, no return fare.
           </p>
           <div className="inline-flex items-center bg-black/20 rounded-full px-6 py-3 text-white">

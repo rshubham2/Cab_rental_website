@@ -14,10 +14,10 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Gautham Tours and Travels - Pan-India Chauffeur Driven Cab Services</title>
-        <meta name="description" content="Experience premium chauffeur-driven cab services across 2000+ cities in India. Outstation trips, local travel, airport transfers, and one-way drops." />
-        <meta property="og:title" content="Gautham Tours and Travels - Pan-India Chauffeur Driven Cab Services" />
-        <meta property="og:description" content="Premium cab services for outstation trips, local travel, airport transfers, and one-way drops across 2000+ cities in India." />
+        <title>Gautham Tours and Travels - Premium Cab Services Across Maharashtra</title>
+        <meta name="description" content="Experience premium chauffeur-driven cab services throughout Maharashtra. Outstation trips, local travel, airport transfers, and one-way drops to all major destinations." />
+        <meta property="og:title" content="Gautham Tours and Travels - Premium Cab Services Across Maharashtra" />
+        <meta property="og:description" content="Premium cab services for outstation trips, local travel, airport transfers, and one-way drops to all major destinations in Maharashtra." />
         <meta property="og:type" content="website" />
       </Helmet>
       <main>
