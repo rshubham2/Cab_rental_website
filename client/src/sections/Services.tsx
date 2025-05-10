@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Route, MapPin, Plane, CalendarClock, Check, Car, ArrowRight } from "lucide-react";
+import { Route, MapPin, Plane, CalendarClock, Check, Car, ArrowRight, Phone } from "lucide-react";
 
 const servicesData = [
   {
@@ -74,98 +74,162 @@ const carTypes = [
 const Services = () => {
   return (
     <>
-      <section id="services" className="py-16 bg-white">
+      <section id="services" className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-sans font-bold text-3xl md:text-4xl mb-4">Our Services</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Comprehensive cab rental solutions tailored to your travel needs across India.
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              Our Premium Services
+            </span>
+            <h2 className="font-sans font-bold text-3xl md:text-5xl mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Travel Your Way
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Comprehensive cab rental solutions tailored to your travel needs across India. Choose from our wide range of services.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {servicesData.map((service, index) => (
-              <div key={index} className="service-card bg-gray-50 rounded-xl shadow-md overflow-hidden transition duration-300">
-                <div className="h-48 overflow-hidden">
+              <div key={index} className="service-card relative bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:z-10 group">
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 shadow-lg text-primary">
+                    {service.icon}
+                  </span>
+                </div>
+                <div className="h-56 overflow-hidden img-hover-zoom relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
                   <img 
                     src={service.image} 
                     alt={service.title} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700"
                   />
+                  <div className="absolute bottom-4 left-4 z-10">
+                    <h3 className="font-sans font-bold text-xl text-white">{service.title}</h3>
+                  </div>
                 </div>
                 <div className="p-6">
-                  <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                    {service.icon}
-                  </div>
-                  <h3 className="font-sans font-semibold text-xl mb-2">{service.title}</h3>
                   <p className="text-gray-600 mb-4">{service.description}</p>
                   <ul className="text-gray-700 space-y-2 mb-6">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <Check className="text-green-500 h-4 w-4 mt-1 mr-2" />
+                      <li key={i} className="flex items-start group-hover:translate-x-1 transition-transform duration-300">
+                        <Check className="text-success h-5 w-5 mt-0.5 mr-2 flex-shrink-0" />
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <div>
                     <Link href="/booking">
-                      <span className="text-primary font-medium hover:text-primary/80 inline-flex items-center cursor-pointer">
-                        Book {service.title} <ArrowRight className="ml-2 h-4 w-4" />
+                      <span className="text-primary font-medium hover:text-primary/80 inline-flex items-center cursor-pointer group-hover:translate-x-1 transition-transform duration-300">
+                        Book {service.title} 
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:ml-3 transition-all duration-300" />
                       </span>
                     </Link>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="mt-16 text-center">
+            <Link href="/booking">
+              <span className="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-full transition shadow-lg cursor-pointer btn-hover-effect">
+                <span>View All Services</span>
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>
       
       {/* Car Fleet Section */}
-      <section id="fleet" className="py-16 bg-gray-50">
+      <section id="fleet" className="py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-sans font-bold text-3xl md:text-4xl mb-4">Our Rental Fleet</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Choose from our wide selection of well-maintained vehicles to match your specific travel needs.
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-4">
+              Premium Vehicles
+            </span>
+            <h2 className="font-sans font-bold text-3xl md:text-5xl mb-6 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              Our Exceptional Fleet
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Choose from our wide selection of well-maintained vehicles to match your specific travel needs and budget.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-10">
             {carTypes.map((carType, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
-                <div className="h-64 overflow-hidden">
+              <div key={index} className="service-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl group">
+                <div className="h-64 overflow-hidden img-hover-zoom relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10"></div>
                   <img 
                     src={carType.image} 
                     alt={carType.category} 
                     className="w-full h-full object-cover"
                   />
+                  <div className="absolute bottom-0 left-0 w-full p-6 z-10">
+                    <div className="flex items-center">
+                      <div className="bg-white/90 rounded-full p-2 mr-3 shadow-lg">
+                        <Car className="text-primary h-6 w-6" />
+                      </div>
+                      <h3 className="font-sans font-bold text-2xl text-white">{carType.category}</h3>
+                    </div>
+                  </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <Car className="text-primary mr-3 h-5 w-5" />
-                    <h3 className="font-sans font-semibold text-xl">{carType.category}</h3>
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="bg-primary/5 rounded-lg p-4 text-center hover:bg-primary/10 transition-colors">
+                      <p className="text-gray-500 text-sm mb-1">Passenger Capacity</p>
+                      <p className="text-xl font-semibold text-primary">
+                        {carType.category.includes("SUV") || carType.category.includes("Large") ? "6-7 People" : 
+                         carType.category.includes("Midsize") ? "4-5 People" : 
+                         carType.category.includes("Luxury") ? "4 People" : "12+ People"}
+                      </p>
+                    </div>
+                    <div className="bg-secondary/5 rounded-lg p-4 text-center hover:bg-secondary/10 transition-colors">
+                      <p className="text-gray-500 text-sm mb-1">Best For</p>
+                      <p className="text-xl font-semibold text-secondary">
+                        {carType.category.includes("SUV") ? "Family Trips" : 
+                         carType.category.includes("Midsize") ? "City Travel" : 
+                         carType.category.includes("Luxury") ? "Business" : "Large Groups"}
+                      </p>
+                    </div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                    <p className="text-gray-700 font-medium mb-2">Available Models:</p>
+                  
+                  <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                    <p className="text-gray-700 font-medium mb-3 flex items-center">
+                      <svg className="w-5 h-5 mr-2 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Available Models:
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {carType.models.map((model, i) => (
-                        <span key={i} className="inline-block bg-primary/10 text-primary rounded-full px-3 py-1 text-sm">
+                        <span key={i} className="inline-block bg-white border border-gray-200 shadow-sm text-gray-800 rounded-full px-3 py-1 text-sm group-hover:translate-y-[-2px] transition-all duration-300">
                           {model}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <div>
-                    <Link href="/booking">
-                      <span className="text-primary font-medium hover:text-primary/80 inline-flex items-center cursor-pointer">
-                        Book a {carType.category.slice(0, -1)} <ArrowRight className="ml-2 h-4 w-4" />
-                      </span>
-                    </Link>
-                  </div>
+                  
+                  <Link href="/booking">
+                    <span className="block w-full text-center py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors shadow-md cursor-pointer btn-hover-effect">
+                      Book a {carType.category.slice(0, -1)} Now
+                    </span>
+                  </Link>
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-8 bg-gradient-to-r from-primary/5 to-secondary/5 p-8 rounded-2xl">
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-bold mb-2">Need a custom vehicle option?</h3>
+              <p className="text-gray-600">Contact us for special requests or custom quotations</p>
+            </div>
+            <a href="tel:9045450000" className="inline-flex items-center bg-white hover:bg-gray-50 text-primary font-medium py-3 px-8 rounded-lg transition shadow-lg">
+              <Phone className="h-5 w-5 mr-2" />
+              <span>Call Us Now</span>
+            </a>
           </div>
         </div>
       </section>
