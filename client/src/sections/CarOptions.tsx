@@ -4,37 +4,41 @@ import { Car, Users, ArrowRight } from 'lucide-react';
 
 const carOptions = [
   {
-    title: 'AC Hatchback',
-    description: 'Economy Cabs',
-    price: '₹9/km',
-    seats: '4 seats',
-    image: 'https://www.drivespark.com/images/2021-08/maruti-suzuki-swift-dzire-exterior-1.jpg',
-    info: 'Perfect for city travel and short trips, our hatchbacks are fuel-efficient and easy to navigate in urban settings.'
+    title: "AC Hatchback",
+    description: "Economy Cabs",
+    price: "₹9/km",
+    seats: "4 seats",
+    image:
+      "https://imgd.aeplcdn.com/370x208/n/cw/ec/170173/dzire-2024-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80",
+    info: "Perfect for city travel and short trips, our hatchbacks are fuel-efficient and easy to navigate in urban settings.",
   },
   {
-    title: 'AC Sedan',
-    description: 'Premium Economy Cabs',
-    price: '₹10/km',
-    seats: '4 seats',
-    image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/130591/fronx-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80',
-    info: 'Our sedans offer an excellent balance of comfort and value, ideal for business travel or small families.'
+    title: "AC Sedan",
+    description: "Premium Economy Cabs",
+    price: "₹10/km",
+    seats: "4 seats",
+    image:
+      "https://imgd.aeplcdn.com/664x374/n/cw/ec/130591/fronx-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80",
+    info: "Our sedans offer an excellent balance of comfort and value, ideal for business travel or small families.",
   },
   {
-    title: 'AC SUV Large',
-    description: 'Perfect for Families',
-    price: '₹13.5/km',
-    seats: '7 seats',
-    image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/107369/innova-hycross-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80',
-    info: 'Spacious SUVs with ample luggage space, ideal for family vacations and group travel with maximum comfort.'
+    title: "AC SUV Large",
+    description: "Perfect for Families",
+    price: "₹13.5/km",
+    seats: "7 seats",
+    image:
+      "https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.png?isig=0&q=80",
+    info: "Spacious SUVs with ample luggage space, ideal for family vacations and group travel with maximum comfort.",
   },
   {
-    title: 'Full Size Van',
-    description: 'Full Size Van',
-    price: '₹26/km',
-    seats: '12 seats',
-    image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/141723/winger-exterior-right-front-three-quarter.jpeg?isig=0&q=80',
-    info: 'Perfect for large groups and corporate outings, our full-size vans offer maximum capacity with comfort.'
-  }
+    title: "Full Size Van",
+    description: "Full Size Van",
+    price: "₹26/km",
+    seats: "12 seats",
+    image:
+      "https://5.imimg.com/data5/CE/AC/MY-15973426/force-traveller-26-mini-bus-500x500.jpg",
+    info: "Perfect for large groups and corporate outings, our full-size vans offer maximum capacity with comfort.",
+  },
 ];
 
 const CarOptions = () => {

@@ -10,9 +10,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="font-sans font-semibold text-xl mb-4">Gautham Tours and Travels</h3>
+            <h3 className="font-sans font-semibold text-xl mb-4">
+              Gautham Tours and Travels
+            </h3>
             <p className="text-gray-300 mb-4">
-              Premium chauffeur-driven cab services across 2000+ cities in India. Making road trips comfortable, flexible, and enjoyable.
+              Premium chauffeur-driven cab services across 2000+ cities in
+              India. Making road trips comfortable, flexible, and enjoyable.
             </p>
             <div className="flex gap-4 mt-4">
               <a href="#" className="text-gray-300 hover:text-white transition">
@@ -29,62 +32,150 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
-            <h3 className="font-sans font-semibold text-xl mb-4">Quick Links</h3>
+            <h3 className="font-sans font-semibold text-xl mb-4">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
-              <li><Link href="/"><span className="text-gray-300 hover:text-white transition cursor-pointer">Home</span></Link></li>
-              <li><Link href="/#about"><span className="text-gray-300 hover:text-white transition cursor-pointer">About Us</span></Link></li>
-              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Services</span></Link></li>
-              <li><Link href="/booking"><span className="text-gray-300 hover:text-white transition cursor-pointer">Book Now</span></Link></li>
-              <li><Link href="/contact"><span className="text-gray-300 hover:text-white transition cursor-pointer">Contact Us</span></Link></li>
+              <li>
+                <Link href="/">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    Home
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/#about">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    About Us
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    Services
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/booking">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    Book Now
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    Contact Us
+                  </span>
+                </Link>
+              </li>
             </ul>
           </div>
-          
+
           {/* Services */}
           <div>
-            <h3 className="font-sans font-semibold text-xl mb-4">Our Services</h3>
+            <h3 className="font-sans font-semibold text-xl mb-4">
+              Our Services
+            </h3>
             <ul className="space-y-2">
-              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Outstation Trips</span></Link></li>
-              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Local Travel</span></Link></li>
-              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Airport Transfers</span></Link></li>
-              <li><Link href="/one-way-fares"><span className="text-gray-300 hover:text-white transition cursor-pointer">One-Way Drops</span></Link></li>
-              <li><Link href="/#services"><span className="text-gray-300 hover:text-white transition cursor-pointer">Corporate Travel</span></Link></li>
+              <li>
+                <Link href="/#services">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    Outstation Trips
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    Local Travel
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    Airport Transfers
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/one-way-fares">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    One-Way Drops
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services">
+                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
+                    Corporate Travel
+                  </span>
+                </Link>
+              </li>
             </ul>
           </div>
-          
+
           {/* Contact Info */}
           <div>
-            <h3 className="font-sans font-semibold text-xl mb-4">Contact Info</h3>
+            <h3 className="font-sans font-semibold text-xl mb-4">
+              Contact Info
+            </h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mt-1 mr-3 text-primary" />
-                <span className="text-gray-300">123 Transport Tower, MG Road<br />New Delhi - 110001</span>
+                <span className="text-gray-300">
+                  004, 4/B, Matoshree, Maharashtra nagar
+                  <br />
+                  Mumbai - 400088
+                </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-primary" />
-                <a href="tel:9045450000" className="text-gray-300 hover:text-white transition">+91 9045450000</a>
+                <a
+                  href="tel:96194556608"
+                  className="text-gray-300 hover:text-white transition"
+                >
+                  +91 96194556608
+                </a>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-primary" />
-                <a href="mailto:info@gauthamtoursandtravels.com" className="text-gray-300 hover:text-white transition">info@gauthamtoursandtravels.com</a>
+                <a
+                  href="mailto:info@gauthamtoursandtravels.com"
+                  className="text-gray-300 hover:text-white transition"
+                >
+                  info@gauthamtoursandtravels.com
+                </a>
               </li>
             </ul>
           </div>
         </div>
-        
+
         <hr className="border-gray-700 my-8" />
-        
+
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             &copy; {currentYear} Gautham Tours and Travels. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-4 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition">Terms & Conditions</a>
-            <a href="#" className="text-gray-400 hover:text-white transition">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-white transition">Refund Policy</a>
-            <a href="#" className="text-gray-400 hover:text-white transition">Sitemap</a>
+            <a href="#" className="text-gray-400 hover:text-white transition">
+              Terms & Conditions
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition">
+              Refund Policy
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition">
+              Sitemap
+            </a>
           </div>
         </div>
       </div>

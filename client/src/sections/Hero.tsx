@@ -100,7 +100,7 @@ const Hero = () => {
           {/* Hero Content */}
           <div className="text-white fade-in">
             <div className="relative inline-flex mb-4">
-              <span className="bg-secondary/20 text-secondary px-4 py-1 rounded-full text-sm font-medium">Pan-India Service</span>
+              <span className="bg-secondary/20 text-secondary px-4 py-1 rounded-full text-sm font-medium">Maharashtra Service</span>
             </div>
             <h1 className="font-sans font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
               Your Journey, 

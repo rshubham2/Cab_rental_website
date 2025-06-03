@@ -12,7 +12,8 @@ const oneWayRoutes = [
     duration: "3 hours",
     sedanFare: "₹2,534",
     suvFare: "₹3,029",
-    image: "https://images.unsplash.com/photo-1520688953309-9ccd2ae0edd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+    image:
+      "https://mittalbuilders.com/wp-content/uploads/2020/12/Reasons-to-settle-down-in-Pune-1024x683.png",
   },
   {
     from: "Mumbai",
@@ -21,7 +22,8 @@ const oneWayRoutes = [
     duration: "1.5 hours",
     sedanFare: "₹2,473",
     suvFare: "₹3,184",
-    image: "https://images.unsplash.com/photo-1611640844364-5d6e046f2211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+    image:
+      "https://cdn1.tripoto.com/media/filter/tst/img/1524784/Image/1586616431_5_3.jpg.webp",
   },
   {
     from: "Mumbai",
@@ -30,7 +32,7 @@ const oneWayRoutes = [
     duration: "5.5 hours",
     sedanFare: "₹4,440",
     suvFare: "₹5,810",
-    image: "https://images.unsplash.com/photo-1600093991895-6a1de5bd510e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+    image: "https://i.cdn.newsbytesapp.com/images/l4120211229212844.jpeg",
   },
   {
     from: "Mumbai",
@@ -39,7 +41,8 @@ const oneWayRoutes = [
     duration: "2 hours",
     sedanFare: "₹2,111",
     suvFare: "₹2,969",
-    image: "https://images.unsplash.com/photo-1513364668472-514a33778610?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+    image:
+      "https://www.mapsofindia.com/ci-moi-images/my-india/2015/09/adlabs-imagica.jpg",
   },
   {
     from: "Mumbai",
@@ -48,7 +51,8 @@ const oneWayRoutes = [
     duration: "2.5 hours",
     sedanFare: "₹2,850",
     suvFare: "₹3,450",
-    image: "https://images.unsplash.com/photo-1530077471762-3cef45f920cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+    image:
+      "https://i.ytimg.com/vi/qvhCWQGGXF4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBQdu4ND6mb-LrXDS3aP3xR6m_Ecw",
   },
   {
     from: "Mumbai",
@@ -57,8 +61,9 @@ const oneWayRoutes = [
     duration: "3.5 hours",
     sedanFare: "₹3,380",
     suvFare: "₹4,250",
-    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-  }
+    image:
+      "https://www.shirdi.wetnjoy.in/wp-content/uploads/2023/06/Places-to-visit-in-Nashik-Wnj-Shirdi.png",
+  },
 ];
 
 const OneWayFares = () => {

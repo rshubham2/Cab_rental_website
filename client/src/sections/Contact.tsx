@@ -71,17 +71,21 @@ const Contact = () => {
     <section id="contact" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-sans font-bold text-3xl md:text-4xl mb-4">Contact Us</h2>
+          <h2 className="font-sans font-bold text-3xl md:text-4xl mb-4">
+            Contact Us
+          </h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
             We're here to assist you with any questions or special requirements.
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <div className="bg-gray-50 rounded-xl shadow-md p-6 md:p-8 h-full">
-              <h3 className="font-sans font-semibold text-2xl mb-6">Get in Touch</h3>
-              
+              <h3 className="font-sans font-semibold text-2xl mb-6">
+                Get in Touch
+              </h3>
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
@@ -89,43 +93,69 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-lg mb-1">Phone</h4>
-                    <a href="tel:9045450000" className="text-gray-700 hover:text-primary">+91 9045450000</a>
+                    <a
+                      href="tel:96194556608"
+                      className="text-gray-700 hover:text-primary"
+                    >
+                      +91 96194556608
+                    </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
                     <Mail className="text-primary h-5 w-5" />
                   </div>
                   <div>
                     <h4 className="font-medium text-lg mb-1">Email</h4>
-                    <a href="mailto:info@roadtripindia.com" className="text-gray-700 hover:text-primary">info@roadtripindia.com</a>
+                    <a
+                      href="mailto:info@gauthamindia.com"
+                      className="text-gray-700 hover:text-primary"
+                    >
+                      info@gauthamindia.com
+                    </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
                     <MapPin className="text-primary h-5 w-5" />
                   </div>
                   <div>
                     <h4 className="font-medium text-lg mb-1">Head Office</h4>
-                    <p className="text-gray-700">123 Transport Tower, MG Road<br />New Delhi - 110001</p>
+                    <p className="text-gray-700">
+                      004, 4/B, Matoshree, Maharashtra Nagar
+                      <br />
+                      Mumbai - 400088
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="pt-4">
                   <h4 className="font-medium text-lg mb-4">Follow Us</h4>
                   <div className="flex gap-4">
-                    <a href="#" className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                    <a
+                      href="#"
+                      className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition"
+                    >
                       <Facebook className="h-5 w-5" />
                     </a>
-                    <a href="#" className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                    <a
+                      href="#"
+                      className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition"
+                    >
                       <Twitter className="h-5 w-5" />
                     </a>
-                    <a href="#" className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                    <a
+                      href="#"
+                      className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition"
+                    >
                       <Instagram className="h-5 w-5" />
                     </a>
-                    <a href="#" className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                    <a
+                      href="#"
+                      className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition"
+                    >
                       <Linkedin className="h-5 w-5" />
                     </a>
                   </div>
@@ -133,12 +163,17 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          
+
           <div>
             <div className="bg-gray-50 rounded-xl shadow-md p-6 md:p-8">
-              <h3 className="font-sans font-semibold text-2xl mb-6">Send a Message</h3>
+              <h3 className="font-sans font-semibold text-2xl mb-6">
+                Send a Message
+              </h3>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-4"
+                >
                   <FormField
                     control={form.control}
                     name="name"
@@ -146,13 +181,16 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>Your Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your full name" {...field} />
+                          <Input
+                            placeholder="Enter your full name"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="email"
@@ -160,13 +198,17 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>Email Address</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="Enter your email address" {...field} />
+                          <Input
+                            type="email"
+                            placeholder="Enter your email address"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="phone"
@@ -174,13 +216,16 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your phone number" {...field} />
+                          <Input
+                            placeholder="Enter your phone number"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="subject"
@@ -188,13 +233,16 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>Subject</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter message subject" {...field} />
+                          <Input
+                            placeholder="Enter message subject"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="message"
@@ -202,20 +250,20 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>Message</FormLabel>
                         <FormControl>
-                          <Textarea 
-                            placeholder="Write your message here..." 
-                            rows={4} 
+                          <Textarea
+                            placeholder="Write your message here..."
+                            rows={4}
                             className="resize-none"
-                            {...field} 
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
-                  <Button 
-                    type="submit" 
+
+                  <Button
+                    type="submit"
                     className="w-full bg-primary hover:bg-primary/90 text-white"
                     disabled={mutation.isPending}
                   >
