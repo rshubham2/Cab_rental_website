@@ -40,13 +40,14 @@ const Header = () => {
 
   const navigationLinks = [
     { href: "/", label: "Home" },
-    { href: "/#about", label: "About" },
-    { href: "/#services", label: "Services" },
+    { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
     { href: "/one-way-fares", label: "One-Way Fares" },
     { 
       label: "Rental Fleets", 
       hasDropdown: true,
       dropdownItems: [
+        { href: "/fleet", label: "View All Fleet" },
         { href: "/fleet/swift-dzire", label: "Swift Dzire Car Rental" },
         { href: "/fleet/innova-crysta", label: "Innova Crysta Car Rental" },
         { href: "/fleet/innova", label: "Innova Car Rental" },
@@ -56,8 +57,7 @@ const Header = () => {
         { href: "/fleet/tempo-traveller", label: "Bus & Tempo Travellers Rental" },
       ] 
     },
-    { href: "/#testimonials", label: "Testimonials" },
-    { href: "/#faq", label: "FAQ" },
+    { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -116,9 +116,9 @@ const Header = () => {
         
         {/* Phone Number */}
         {!isMobile && (
-          <a href="tel:9045450000" className="flex items-center text-secondary font-medium">
+          <a href="tel:96194556608" className="flex items-center text-secondary font-medium">
             <Phone className="h-4 w-4 mr-2" />
-            <span>9045450000</span>
+            <span>96194556608</span>
           </a>
         )}
         
@@ -184,9 +184,9 @@ const Header = () => {
                 </div>
               )
             ))}
-            <a href="tel:9045450000" className="flex items-center text-secondary font-medium py-2">
+            <a href="tel:96194556608" className="flex items-center text-secondary font-medium py-2">
               <Phone className="h-4 w-4 mr-2" />
-              <span>9045450000</span>
+              <span>96194556608</span>
             </a>
           </div>
         </div>

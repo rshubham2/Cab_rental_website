@@ -8,6 +8,10 @@ import Home from "@/pages/Home";
 import BookingForm from "@/pages/BookingForm";
 import ContactPage from "@/pages/ContactPage";
 import OneWayFares from "@/pages/OneWayFares";
+import AboutPage from "@/pages/AboutPage";
+import ServicesPage from "@/pages/ServicesPage";
+import TestimonialsPage from "@/pages/TestimonialsPage";
+import FleetPage from "@/pages/FleetPage";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
@@ -19,6 +23,11 @@ function Router() {
       <Route path="/booking" component={BookingForm} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/one-way-fares" component={OneWayFares} />
+      <Route path="/about" component={AboutPage} />
+      <Route path="/services" component={ServicesPage} />
+      <Route path="/testimonials" component={TestimonialsPage} />
+      <Route path="/fleet" component={FleetPage} />
+      <Route path="/fleet/:vehicleType" component={FleetPage} />
       <Route component={NotFound} />
     </Switch>
   );

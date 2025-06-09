@@ -1,4 +1,5 @@
 import { MapPin, UserCheck, Car, Headphones } from "lucide-react";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const features = [
   {
@@ -25,16 +26,24 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-white relative overflow-hidden">
+      <ParticleBackground 
+        className="opacity-5"
+        particleCount={40}
+        particleColor="#3B82F6"
+        particleSize={2}
+        speed={0.4}
+      />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-4 gap-8 text-center">
           {features.map((feature, index) => (
-            <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md">
-              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 relative z-10">
                 {feature.icon}
               </div>
-              <h3 className="font-sans font-semibold text-xl mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <h3 className="font-sans font-semibold text-xl mb-2 relative z-10">{feature.title}</h3>
+              <p className="text-gray-600 relative z-10">{feature.description}</p>
             </div>
           ))}
         </div>

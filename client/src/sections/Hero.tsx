@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Phone } from "lucide-react";
+import ParticleBackground from "@/components/ParticleBackground";
 
 import {
   Form,
@@ -93,6 +94,14 @@ const Hero = () => {
           alt="Scenic Indian highway" 
           className="w-full h-full object-cover scale-in" 
         />
+        {/* Particle Background */}
+        <ParticleBackground 
+          className="opacity-30"
+          particleCount={30}
+          particleColor="#FF6B35"
+          particleSize={3}
+          speed={0.3}
+        />
       </div>
       
       <div className="container mx-auto px-4 z-10 pt-10">
@@ -107,7 +116,7 @@ const Hero = () => {
               <span className="block text-secondary">Our Responsibility</span>
             </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-xl">
-              Experience premium chauffeur-driven cab services across 2000+ cities in India. Travel with comfort, flexibility, and peace of mind.
+              Experience premium chauffeur-driven cab services across Maharashtra and beyond. Travel with comfort, flexibility, and peace of mind.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/booking">
@@ -118,7 +127,7 @@ const Hero = () => {
                   </svg>
                 </span>
               </Link>
-              <a href="tel:9045450000" className="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-8 rounded-lg transition shadow-lg flex items-center">
+              <a href="tel:96194556608" className="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-8 rounded-lg transition shadow-lg flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
                 <span>Call Now</span>
               </a>
@@ -144,8 +153,15 @@ const Hero = () => {
           </div>
           
           {/* Booking Form Card */}
-          <Card className="bg-white rounded-xl shadow-2xl border-0 scale-in">
-            <CardHeader className="pb-2 border-b">
+          <Card className="bg-white rounded-xl shadow-2xl border-0 scale-in relative">
+            <ParticleBackground 
+              className="opacity-10 rounded-xl"
+              particleCount={15}
+              particleColor="#3B82F6"
+              particleSize={2}
+              speed={0.2}
+            />
+            <CardHeader className="pb-2 border-b relative z-10">
               <CardTitle className="text-2xl text-center text-primary">
                 <span className="flex items-center justify-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -158,7 +174,7 @@ const Hero = () => {
                 </span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent className="pt-6 relative z-10">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                   <div className="bg-primary/5 p-4 rounded-lg mb-2">
