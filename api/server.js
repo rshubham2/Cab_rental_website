@@ -1,18 +1,35 @@
 // api/server.js
 const express = require('express');
-const path = require('path');
+const cors = require('cors');
 
-// Import your existing server
-const { createApp } = require('../server/index.js');
+// Create Express app
+const app = express();
 
-const app = createApp();
+// Configure CORS
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 
-// Serve static files from client/dist
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Catch all handler for React Router
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+// Import your existing routes (adjust path if needed)
+try {
+  const routes = require('../server/routes');
+  app.use('/api', routes);
+} catch (error) {
+  console.log('Routes import error:', error);
+  
+  // Fallback route for testing
+  app.get('/api/health', (req, res) => {
+    res.json({ status: 'OK', message: 'Server is running' });
+  });
+}
+
+// Handle all API routes
+app.all('/api/*', (req, res) => {
+  res.status(404).json({ error: 'API route not found' });
 });
 
 module.exports = app;
