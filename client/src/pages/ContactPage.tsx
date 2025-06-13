@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { insertContactSchema } from "@shared/schema";
+import { insertContactSchema, insertBookingSchema } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin } from "lucide-react";
@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,16 +20,30 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const contactFormSchema = insertContactSchema;
+const bookingFormSchema = insertBookingSchema.extend({
+  startDate: z.string().min(1, "Start date is required"),
+  returnDate: z.string().optional(),
+  email: z.string().email("Please enter a valid email address").optional(),
+});
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
+type BookingFormValues = z.infer<typeof bookingFormSchema>;
 
 const ContactPage = () => {
   const { toast } = useToast();
 
-  const form = useForm<ContactFormValues>({
+  const contactForm = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
@@ -39,7 +54,23 @@ const ContactPage = () => {
     },
   });
 
-  const mutation = useMutation({
+  const bookingForm = useForm<BookingFormValues>({
+    resolver: zodResolver(bookingFormSchema),
+    defaultValues: {
+      tripType: "outstation",
+      from: "",
+      to: "",
+      startDate: "",
+      returnDate: "",
+      carType: "",
+      contactNumber: "",
+      email: "",
+      driverLanguage: "",
+      additionalRequirements: "",
+    },
+  });
+
+  const contactMutation = useMutation({
     mutationFn: async (values: ContactFormValues) => {
       const response = await apiRequest("POST", "/api/contact", values);
       return response.json();
@@ -49,7 +80,7 @@ const ContactPage = () => {
         title: "Message Sent",
         description: "Your message has been successfully sent. We'll get back to you shortly.",
       });
-      form.reset();
+      contactForm.reset();
     },
     onError: (error) => {
       toast({
@@ -60,8 +91,33 @@ const ContactPage = () => {
     },
   });
 
-  function onSubmit(values: ContactFormValues) {
-    mutation.mutate(values);
+  const bookingMutation = useMutation({
+    mutationFn: async (values: BookingFormValues) => {
+      const response = await apiRequest("POST", "/api/bookings", values);
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Booking Submitted",
+        description: "Your booking request has been successfully submitted. We'll contact you shortly.",
+      });
+      bookingForm.reset();
+    },
+    onError: (error) => {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to submit booking request.",
+      });
+    },
+  });
+
+  function onContactSubmit(values: ContactFormValues) {
+    contactMutation.mutate(values);
+  }
+
+  function onBookingSubmit(values: BookingFormValues) {
+    bookingMutation.mutate(values);
   }
 
   return (
@@ -79,11 +135,12 @@ const ContactPage = () => {
             Contact Us
           </h1>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            We're here to assist you with any questions or special requirements.
+            We're here to assist you with any questions or special requirements. Get in touch or book your ride directly.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact Information */}
           <div>
             <Card className="bg-gray-50 border-none shadow-md h-full">
               <CardContent className="p-6 md:p-8">
@@ -166,114 +223,248 @@ const ContactPage = () => {
             </Card>
           </div>
 
+          {/* Contact and Booking Forms */}
           <div>
             <Card className="bg-gray-50 border-none shadow-md">
               <CardContent className="p-6 md:p-8">
-                <h2 className="font-sans font-semibold text-2xl mb-6">
-                  Send a Message
-                </h2>
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-4"
-                  >
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Your Name</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Enter your full name"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                <Tabs defaultValue="contact" className="w-full">
+                  <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="contact">Send Message</TabsTrigger>
+                    <TabsTrigger value="booking">Quick Booking</TabsTrigger>
+                  </TabsList>
+                  
+                  <TabsContent value="contact" className="mt-6">
+                    <h2 className="font-sans font-semibold text-2xl mb-6">
+                      Send a Message
+                    </h2>
+                    <Form {...contactForm}>
+                      <form
+                        onSubmit={contactForm.handleSubmit(onContactSubmit)}
+                        className="space-y-4"
+                      >
+                        <FormField
+                          control={contactForm.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Your Name</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Enter your full name"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
 
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email Address</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="email"
-                              placeholder="Enter your email address"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        <FormField
+                          control={contactForm.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Email Address</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="email"
+                                  placeholder="Enter your email address"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
 
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Enter your phone number"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        <FormField
+                          control={contactForm.control}
+                          name="phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Phone Number</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Enter your phone number"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
 
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Subject</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Enter message subject"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        <FormField
+                          control={contactForm.control}
+                          name="subject"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Subject</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Enter message subject"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
 
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Write your message here..."
-                              rows={4}
-                              className="resize-none"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        <FormField
+                          control={contactForm.control}
+                          name="message"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Message</FormLabel>
+                              <FormControl>
+                                <Textarea
+                                  placeholder="Write your message here..."
+                                  rows={4}
+                                  className="resize-none"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
 
-                    <Button
-                      type="submit"
-                      className="w-full bg-primary hover:bg-primary/90 text-white"
-                      disabled={mutation.isPending}
-                    >
-                      {mutation.isPending ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
-                </Form>
+                        <Button
+                          type="submit"
+                          className="w-full bg-primary hover:bg-primary/90 text-white"
+                          disabled={contactMutation.isPending}
+                        >
+                          {contactMutation.isPending ? "Sending..." : "Send Message"}
+                        </Button>
+                      </form>
+                    </Form>
+                  </TabsContent>
+                  
+                  <TabsContent value="booking" className="mt-6">
+                    <h2 className="font-sans font-semibold text-2xl mb-6">
+                      Quick Booking
+                    </h2>
+                    <Form {...bookingForm}>
+                      <form onSubmit={bookingForm.handleSubmit(onBookingSubmit)} className="space-y-4">
+                        <FormField
+                          control={bookingForm.control}
+                          name="tripType"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Trip Type</FormLabel>
+                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select Trip Type" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="outstation">Outstation Trip</SelectItem>
+                                  <SelectItem value="local">Local Travel</SelectItem>
+                                  <SelectItem value="airport">Airport Transfer</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <div className="grid grid-cols-2 gap-4">
+                          <FormField
+                            control={bookingForm.control}
+                            name="from"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>From</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Pickup location" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={bookingForm.control}
+                            name="to"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>To</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Destination" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                          <FormField
+                            control={bookingForm.control}
+                            name="startDate"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Start Date</FormLabel>
+                                <FormControl>
+                                  <Input type="date" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={bookingForm.control}
+                            name="carType"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Car Type</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Select Car" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="sedan">Sedan</SelectItem>
+                                    <SelectItem value="suv">SUV</SelectItem>
+                                    <SelectItem value="luxury">Luxury</SelectItem>
+                                    <SelectItem value="tempo">Tempo Traveller</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+
+                        <FormField
+                          control={bookingForm.control}
+                          name="contactNumber"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Contact Number</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Your phone number" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <Button
+                          type="submit"
+                          className="w-full bg-primary hover:bg-primary/90 text-white"
+                          disabled={bookingMutation.isPending}
+                        >
+                          {bookingMutation.isPending ? "Submitting..." : "Book Now"}
+                        </Button>
+                      </form>
+                    </Form>
+                  </TabsContent>
+                </Tabs>
               </CardContent>
             </Card>
           </div>

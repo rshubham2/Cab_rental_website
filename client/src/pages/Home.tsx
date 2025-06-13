@@ -1,13 +1,10 @@
 import Hero from '@/sections/Hero';
 import Features from '@/sections/Features';
 import About from '@/sections/About';
-import Services from '@/sections/Services';
 import CarOptions from '@/sections/CarOptions';
 import ScrollingMap from '@/components/ScrollingMap';
 import Booking from '@/sections/Booking';
-import Testimonials from '@/sections/Testimonials';
 import FAQ from '@/sections/FAQ';
-import Contact from '@/sections/Contact';
 import CTA from '@/sections/CTA';
 import { Helmet } from 'react-helmet';
 
@@ -25,13 +22,10 @@ const Home = () => {
         <Hero />
         <Features />
         <About />
-        <Services />
         <CarOptions />
         <ScrollingMap />
         <Booking />
-        <Testimonials />
         <FAQ />
-        <Contact />
         <CTA />
       </main>
     </>

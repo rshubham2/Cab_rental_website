@@ -7,8 +7,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import BookingForm from "@/pages/BookingForm";
 import ContactPage from "@/pages/ContactPage";
-import ServicesPage from "@/pages/ServicesPage";
-import TestimonialsPage from "@/pages/TestimonialsPage";
+import TourPackagesPage from "@/pages/TourPackagesPage";
 import FleetPage from "@/pages/FleetPage";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -20,8 +19,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/booking" component={BookingForm} />
       <Route path="/contact" component={ContactPage} />
-      <Route path="/services" component={ServicesPage} />
-      <Route path="/testimonials" component={TestimonialsPage} />
+      <Route path="/tour-packages" component={TourPackagesPage} />
       <Route path="/fleet" component={FleetPage} />
       <Route path="/fleet/:vehicleType" component={FleetPage} />
       <Route component={NotFound} />

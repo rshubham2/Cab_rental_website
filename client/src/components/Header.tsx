@@ -40,22 +40,19 @@ const Header = () => {
 
   const navigationLinks = [
     { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
     { 
       label: "Tour Packages", 
       hasDropdown: true,
       dropdownItems: [
-        { href: "/packages/lonavala", label: "Lonavala Package" },
-        { href: "/packages/mahabaleshwar", label: "Mahabaleshwar Package" },
-        { href: "/packages/pratapgad", label: "Pratapgad Package" },
-        { href: "/packages/goa", label: "Goa Package" },
-        { href: "/packages/north-india", label: "North India Tour" },
-        { href: "/packages/omkareshwar", label: "Omkareshwar Package" },
-        { href: "/packages/somnath", label: "Somnath Package" },
+        { href: "/tour-packages#pilgrimage", label: "Pilgrimage Tours" },
+        { href: "/tour-packages#hill-stations", label: "Hill Stations" },
+        { href: "/tour-packages#beaches", label: "Beach Destinations" },
+        { href: "/tour-packages#mumbai-local", label: "Mumbai Local Tours" },
+        { href: "/tour-packages#heritage", label: "Heritage Sites" },
+        { href: "/tour-packages#adventure", label: "Adventure Tours" },
       ] 
     },
     { href: "/fleet", label: "Our Fleet" },
-    { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact" },
   ];
 
