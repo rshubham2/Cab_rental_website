@@ -67,10 +67,10 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us - RoadTrip India</title>
+        <title>Contact Us - Gautham Tours and Travels</title>
         <meta
           name="description"
-          content="Contact RoadTrip India for chauffeur-driven cab services across 2000+ cities in India. Reach us at +91 9045450000."
+          content="Contact Gautham Tours and Travels for premium cab services across Maharashtra. Reach us at gauthamnadar123@gmail.com or call us."
         />
       </Helmet>
       <div className="container mx-auto px-4 py-16">
@@ -98,12 +98,26 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-lg mb-1">Phone</h3>
-                      <a
-                        href="tel:96194556608"
-                        className="text-gray-700 hover:text-primary"
-                      >
-                        +91 96194556608
-                      </a>
+                      <div className="space-y-1">
+                        <a
+                          href="tel:9833401900"
+                          className="block text-gray-700 hover:text-primary"
+                        >
+                          +91 9833401900
+                        </a>
+                        <a
+                          href="tel:8850919298"
+                          className="block text-gray-700 hover:text-primary"
+                        >
+                          +91 8850919298
+                        </a>
+                        <a
+                          href="tel:9619455668"
+                          className="block text-gray-700 hover:text-primary"
+                        >
+                          +91 9619455668
+                        </a>
+                      </div>
                     </div>
                   </div>
 
@@ -114,10 +128,10 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-medium text-lg mb-1">Email</h3>
                       <a
-                        href="mailto:info@gauthamIndia.com"
+                        href="mailto:gauthamnadar123@gmail.com"
                         className="text-gray-700 hover:text-primary"
                       >
-                        info@gautham.com
+                        gauthamnadar123@gmail.com
                       </a>
                     </div>
                   </div>
@@ -145,7 +159,7 @@ const ContactPage = () => {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="RoadTrip India Office Location"
+                    title="Gautham Tours and Travels Office Location"
                   ></iframe>
                 </div>
               </CardContent>

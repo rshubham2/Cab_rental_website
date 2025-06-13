@@ -6,37 +6,29 @@ const carOptions = [
   {
     title: "AC Hatchback",
     description: "Economy Cabs",
-    price: "₹9/km",
     seats: "4 seats",
-    image:
-      "https://imgd.aeplcdn.com/370x208/n/cw/ec/170173/dzire-2024-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80",
+    image: "https://imgd.aeplcdn.com/370x208/n/cw/ec/170173/dzire-2024-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80",
     info: "Perfect for city travel and short trips, our hatchbacks are fuel-efficient and easy to navigate in urban settings.",
   },
   {
     title: "AC Sedan",
     description: "Premium Economy Cabs",
-    price: "₹10/km",
     seats: "4 seats",
-    image:
-      "https://imgd.aeplcdn.com/664x374/n/cw/ec/130591/fronx-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80",
+    image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/130591/fronx-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80",
     info: "Our sedans offer an excellent balance of comfort and value, ideal for business travel or small families.",
   },
   {
     title: "AC SUV Large",
     description: "Perfect for Families",
-    price: "₹13.5/km",
     seats: "7 seats",
-    image:
-      "https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.png?isig=0&q=80",
+    image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.png?isig=0&q=80",
     info: "Spacious SUVs with ample luggage space, ideal for family vacations and group travel with maximum comfort.",
   },
   {
     title: "Full Size Van",
     description: "Full Size Van",
-    price: "₹26/km",
     seats: "12 seats",
-    image:
-      "https://5.imimg.com/data5/CE/AC/MY-15973426/force-traveller-26-mini-bus-500x500.jpg",
+    image: "https://5.imimg.com/data5/CE/AC/MY-15973426/force-traveller-26-mini-bus-500x500.jpg",
     info: "Perfect for large groups and corporate outings, our full-size vans offer maximum capacity with comfort.",
   },
 ];
@@ -46,7 +38,7 @@ const CarOptions = () => {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="font-sans font-bold text-3xl md:text-4xl mb-4">Cab Options & Car Rental Fares</h2>
+          <h2 className="font-sans font-bold text-3xl md:text-4xl mb-4">Our Vehicle Fleet</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
             Choose from our diverse fleet of well-maintained vehicles to match your specific needs and budget.
           </p>
@@ -75,8 +67,7 @@ const CarOptions = () => {
                 </div>
                 
                 <div className="mb-4">
-                  <div className="text-3xl font-bold text-primary">{option.price}</div>
-                  <p className="text-gray-600 text-sm mt-1">{option.info}</p>
+                  <p className="text-gray-600 text-sm">{option.info}</p>
                 </div>
                 
                 <Link href="/booking">
@@ -90,9 +81,9 @@ const CarOptions = () => {
         </div>
         
         <div className="mt-10 text-center">
-          <Link href="/one-way-fares">
+          <Link href="/fleet">
             <span className="inline-flex items-center text-primary font-medium hover:underline cursor-pointer">
-              View One-Way Trip Pricing <ArrowRight className="ml-2 h-4 w-4" />
+              View Complete Fleet <ArrowRight className="ml-2 h-4 w-4" />
             </span>
           </Link>
         </div>

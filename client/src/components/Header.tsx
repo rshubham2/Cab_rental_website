@@ -40,23 +40,21 @@ const Header = () => {
 
   const navigationLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
-    { href: "/one-way-fares", label: "One-Way Fares" },
     { 
-      label: "Rental Fleets", 
+      label: "Tour Packages", 
       hasDropdown: true,
       dropdownItems: [
-        { href: "/fleet", label: "View All Fleet" },
-        { href: "/fleet/swift-dzire", label: "Swift Dzire Car Rental" },
-        { href: "/fleet/innova-crysta", label: "Innova Crysta Car Rental" },
-        { href: "/fleet/innova", label: "Innova Car Rental" },
-        { href: "/fleet/ertiga", label: "Ertiga Car Rental" },
-        { href: "/fleet/tavera", label: "Tavera Car Rental" },
-        { href: "/fleet/tata-winger", label: "Tata Winger Rental" },
-        { href: "/fleet/tempo-traveller", label: "Bus & Tempo Travellers Rental" },
+        { href: "/packages/lonavala", label: "Lonavala Package" },
+        { href: "/packages/mahabaleshwar", label: "Mahabaleshwar Package" },
+        { href: "/packages/pratapgad", label: "Pratapgad Package" },
+        { href: "/packages/goa", label: "Goa Package" },
+        { href: "/packages/north-india", label: "North India Tour" },
+        { href: "/packages/omkareshwar", label: "Omkareshwar Package" },
+        { href: "/packages/somnath", label: "Somnath Package" },
       ] 
     },
+    { href: "/fleet", label: "Our Fleet" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/contact", label: "Contact" },
   ];
@@ -114,12 +112,18 @@ const Header = () => {
           </div>
         )}
         
-        {/* Phone Number */}
+        {/* Phone Numbers */}
         {!isMobile && (
-          <a href="tel:96194556608" className="flex items-center text-secondary font-medium">
-            <Phone className="h-4 w-4 mr-2" />
-            <span>96194556608</span>
-          </a>
+          <div className="flex flex-col text-secondary font-medium text-sm">
+            <a href="tel:9833401900" className="hover:text-primary transition">
+              <Phone className="h-3 w-3 mr-1 inline" />
+              9833401900
+            </a>
+            <a href="tel:8850919298" className="hover:text-primary transition">
+              <Phone className="h-3 w-3 mr-1 inline" />
+              8850919298
+            </a>
+          </div>
         )}
         
         {/* Mobile Menu Button */}
@@ -184,10 +188,16 @@ const Header = () => {
                 </div>
               )
             ))}
-            <a href="tel:96194556608" className="flex items-center text-secondary font-medium py-2">
-              <Phone className="h-4 w-4 mr-2" />
-              <span>96194556608</span>
-            </a>
+            <div className="pt-2 border-t">
+              <a href="tel:9833401900" className="flex items-center text-secondary font-medium py-1">
+                <Phone className="h-4 w-4 mr-2" />
+                <span>9833401900</span>
+              </a>
+              <a href="tel:8850919298" className="flex items-center text-secondary font-medium py-1">
+                <Phone className="h-4 w-4 mr-2" />
+                <span>8850919298</span>
+              </a>
+            </div>
           </div>
         </div>
       )}

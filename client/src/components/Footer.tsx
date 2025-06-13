@@ -14,8 +14,8 @@ const Footer = () => {
               Gautham Tours and Travels
             </h3>
             <p className="text-gray-300 mb-4">
-              Premium chauffeur-driven cab services across 2000+ cities in
-              India. Making road trips comfortable, flexible, and enjoyable.
+              Premium chauffeur-driven cab services across Maharashtra and India. 
+              Making road trips comfortable, flexible, and enjoyable with complete trip planning.
             </p>
             <div className="flex gap-4 mt-4">
               <a href="#" className="text-gray-300 hover:text-white transition">
@@ -47,16 +47,16 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/#about">
+                <Link href="/services">
                   <span className="text-gray-300 hover:text-white transition cursor-pointer">
-                    About Us
+                    Services
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/#services">
+                <Link href="/fleet">
                   <span className="text-gray-300 hover:text-white transition cursor-pointer">
-                    Services
+                    Our Fleet
                   </span>
                 </Link>
               </li>
@@ -84,39 +84,19 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/#services">
-                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
-                    Outstation Trips
-                  </span>
-                </Link>
+                <span className="text-gray-300">Outstation Trips</span>
               </li>
               <li>
-                <Link href="/#services">
-                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
-                    Local Travel
-                  </span>
-                </Link>
+                <span className="text-gray-300">Local Travel</span>
               </li>
               <li>
-                <Link href="/#services">
-                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
-                    Airport Transfers
-                  </span>
-                </Link>
+                <span className="text-gray-300">Airport Transfers</span>
               </li>
               <li>
-                <Link href="/one-way-fares">
-                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
-                    One-Way Drops
-                  </span>
-                </Link>
+                <span className="text-gray-300">Hotel Booking</span>
               </li>
               <li>
-                <Link href="/#services">
-                  <span className="text-gray-300 hover:text-white transition cursor-pointer">
-                    Corporate Travel
-                  </span>
-                </Link>
+                <span className="text-gray-300">Trip Planning</span>
               </li>
             </ul>
           </div>
@@ -137,20 +117,34 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-primary" />
-                <a
-                  href="tel:96194556608"
-                  className="text-gray-300 hover:text-white transition"
-                >
-                  +91 96194556608
-                </a>
+                <div className="flex flex-col">
+                  <a
+                    href="tel:9833401900"
+                    className="text-gray-300 hover:text-white transition"
+                  >
+                    +91 9833401900
+                  </a>
+                  <a
+                    href="tel:8850919298"
+                    className="text-gray-300 hover:text-white transition"
+                  >
+                    +91 8850919298
+                  </a>
+                  <a
+                    href="tel:9619455668"
+                    className="text-gray-300 hover:text-white transition"
+                  >
+                    +91 9619455668
+                  </a>
+                </div>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-primary" />
                 <a
-                  href="mailto:info@gauthamtoursandtravels.com"
+                  href="mailto:gauthamnadar123@gmail.com"
                   className="text-gray-300 hover:text-white transition"
                 >
-                  info@gauthamtoursandtravels.com
+                  gauthamnadar123@gmail.com
                 </a>
               </li>
             </ul>
@@ -172,9 +166,6 @@ const Footer = () => {
             </a>
             <a href="#" className="text-gray-400 hover:text-white transition">
               Refund Policy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition">
-              Sitemap
             </a>
           </div>
         </div>

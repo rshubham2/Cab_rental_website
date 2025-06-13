@@ -50,6 +50,7 @@ const BookingForm = () => {
       carType: "",
       contactNumber: "",
       email: "",
+      driverLanguage: "",
       additionalRequirements: "",
     },
   });
@@ -82,8 +83,8 @@ const BookingForm = () => {
   return (
     <>
       <Helmet>
-        <title>Book Your Cab - RoadTrip India</title>
-        <meta name="description" content="Book your chauffeur-driven cab for outstation trips, local travel, airport transfers, and one-way drops across India." />
+        <title>Book Your Cab - Gautham Tours and Travels</title>
+        <meta name="description" content="Book your chauffeur-driven cab for outstation trips, local travel, airport transfers across Maharashtra and India." />
       </Helmet>
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <Card className="shadow-xl">
@@ -112,7 +113,6 @@ const BookingForm = () => {
                           <SelectItem value="outstation">Outstation Trip</SelectItem>
                           <SelectItem value="local">Local Travel</SelectItem>
                           <SelectItem value="airport">Airport Transfer</SelectItem>
-                          <SelectItem value="oneway">One-Way Drop</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -220,26 +220,59 @@ const BookingForm = () => {
                   />
                 </div>
 
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email Address</FormLabel>
-                      <FormControl>
-                        <Input 
-                          type="email"
-                          placeholder="Enter your email for booking confirmation" 
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormDescription>
-                        We'll send your booking confirmation to this email
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className="grid md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email Address</FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="email"
+                            placeholder="Enter your email for booking confirmation" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          We'll send your booking confirmation to this email
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="driverLanguage"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Preferred Driver Language (Optional)</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select Language" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="hindi">Hindi</SelectItem>
+                            <SelectItem value="english">English</SelectItem>
+                            <SelectItem value="marathi">Marathi</SelectItem>
+                            <SelectItem value="gujarati">Gujarati</SelectItem>
+                            <SelectItem value="tamil">Tamil</SelectItem>
+                            <SelectItem value="telugu">Telugu</SelectItem>
+                            <SelectItem value="kannada">Kannada</SelectItem>
+                            <SelectItem value="bengali">Bengali</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormDescription>
+                          Help us assign a driver who speaks your preferred language
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
                 <FormField
                   control={form.control}
@@ -249,12 +282,15 @@ const BookingForm = () => {
                       <FormLabel>Additional Requirements (Optional)</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Any special requests or requirements..." 
+                          placeholder="Any special requests, hotel booking needs, or trip planning requirements..." 
                           className="resize-none" 
                           rows={4}
                           {...field} 
                         />
                       </FormControl>
+                      <FormDescription>
+                        We also provide hotel booking and complete trip planning services
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}

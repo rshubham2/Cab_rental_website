@@ -17,7 +17,7 @@ export const insertUserSchema = createInsertSchema(users).pick({
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 
-// Add booking schema
+// Add booking schema with driver language preference
 export const bookings = pgTable("bookings", {
   id: serial("id").primaryKey(),
   tripType: text("trip_type").notNull(),
@@ -28,6 +28,7 @@ export const bookings = pgTable("bookings", {
   carType: text("car_type").notNull(),
   contactNumber: text("contact_number").notNull(),
   email: text("email"),
+  driverLanguage: text("driver_language"),
   additionalRequirements: text("additional_requirements"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
