@@ -1,89 +1,8 @@
 import { Link } from "wouter";
-import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
 import { Phone } from "lucide-react";
 import ParticleBackground from "@/components/ParticleBackground";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-const quickBookingSchema = z.object({
-  tripType: z.string().min(1, "Trip type is required"),
-  from: z.string().min(1, "From location is required"),
-  to: z.string().min(1, "Destination is required"),
-  startDate: z.string().min(1, "Start date is required"),
-  returnDate: z.string().optional(),
-});
-
-type QuickBookingValues = z.infer<typeof quickBookingSchema>;
-
 const Hero = () => {
-  const { toast } = useToast();
-
-  const form = useForm<QuickBookingValues>({
-    resolver: zodResolver(quickBookingSchema),
-    defaultValues: {
-      tripType: "outstation-roundtrip",
-      from: "",
-      to: "",
-      startDate: "",
-      returnDate: "",
-    },
-  });
-
-  const mutation = useMutation({
-    mutationFn: async (values: QuickBookingValues) => {
-      const response = await apiRequest("POST", "/api/bookings", {
-        ...values,
-        carType: "sedan", // Default value
-        contactNumber: "", // Will be filled in the next step
-      });
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Booking Started",
-        description: "Please complete your booking with additional details.",
-      });
-      // Redirect to the full booking form
-      window.location.href = "/booking";
-    },
-    onError: (error) => {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to start booking process.",
-      });
-    },
-  });
-
-  function onSubmit(values: QuickBookingValues) {
-    // For the hero section, we'll just redirect to the booking page
-    // instead of submitting the partial data
-    window.location.href = "/booking";
-  }
-
   return (
     <section className="relative min-h-[85vh] flex items-center overflow-hidden">
       {/* Background Image with Overlay and Gradient */}
@@ -127,7 +46,7 @@ const Hero = () => {
                   </svg>
                 </span>
               </Link>
-              <a href="tel:96194556608" className="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-8 rounded-lg transition shadow-lg flex items-center">
+              <a href="tel:9833401900" className="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-8 rounded-lg transition shadow-lg flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
                 <span>Call Now</span>
               </a>
@@ -152,8 +71,8 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Booking Form Card */}
-          <Card className="bg-white rounded-xl shadow-2xl border-0 scale-in relative">
+          {/* Founder Section */}
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl border-0 scale-in relative p-8">
             <ParticleBackground 
               className="opacity-10 rounded-xl"
               particleCount={15}
@@ -161,176 +80,46 @@ const Hero = () => {
               particleSize={2}
               speed={0.2}
             />
-            <CardHeader className="pb-2 border-b relative z-10">
-              <CardTitle className="text-2xl text-center text-primary">
-                <span className="flex items-center justify-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.6-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"></path>
-                    <circle cx="7" cy="17" r="2"></circle>
-                    <path d="M9 17h6"></path>
-                    <circle cx="17" cy="17" r="2"></circle>
-                  </svg>
-                  Book Your Ride
-                </span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6 relative z-10">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                  <div className="bg-primary/5 p-4 rounded-lg mb-2">
-                    <FormField
-                      control={form.control}
-                      name="tripType"
-                      render={({ field }) => (
-                        <FormItem className="mb-0">
-                          <FormLabel className="text-primary font-medium">Trip Type</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl>
-                              <SelectTrigger className="border-0 bg-white shadow-sm">
-                                <SelectValue placeholder="Select Trip Type" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="outstation-roundtrip">Outstation Round Trip</SelectItem>
-                              <SelectItem value="outstation-oneway">Outstation One-Way</SelectItem>
-                              <SelectItem value="local">Local City Travel</SelectItem>
-                              <SelectItem value="airport-pickup">Airport Pickup</SelectItem>
-                              <SelectItem value="airport-drop">Airport Drop</SelectItem>
-                              <SelectItem value="rental">Hourly/Daily Rental</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="from"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-medium flex items-center">
-                            <svg className="w-4 h-4 mr-1 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <circle cx="12" cy="12" r="8" strokeWidth="2" />
-                              <circle cx="12" cy="12" r="3" strokeWidth="2" />
-                            </svg>
-                            From
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Enter pickup location" 
-                              {...field} 
-                              className="border-0 shadow-sm input-focus-effect"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="to"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-medium flex items-center">
-                            <svg className="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" strokeWidth="2" />
-                              <circle cx="12" cy="10" r="3" strokeWidth="2" />
-                            </svg>
-                            To
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Enter destination" 
-                              {...field} 
-                              className="border-0 shadow-sm input-focus-effect"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="startDate"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-medium flex items-center">
-                            <svg className="w-4 h-4 mr-1 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" />
-                              <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" />
-                              <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" />
-                              <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" />
-                            </svg>
-                            Start Date
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              type="date" 
-                              {...field} 
-                              className="border-0 shadow-sm input-focus-effect"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="returnDate"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-medium flex items-center">
-                            <svg className="w-4 h-4 mr-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" />
-                              <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" />
-                              <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" />
-                              <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" />
-                            </svg>
-                            Return Date
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              type="date" 
-                              {...field} 
-                              className="border-0 shadow-sm input-focus-effect"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-primary hover:bg-primary/90 text-white py-6 btn-hover-effect"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                    Plan My Trip
-                  </Button>
-                </form>
-              </Form>
+            <div className="relative z-10 text-center">
+              <div className="mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
+                  alt="R.K Sevar Nadar - Founder" 
+                  className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary/20 shadow-lg object-cover"
+                />
+                <h3 className="text-2xl font-bold text-primary mb-2">R.K Sevar Nadar</h3>
+                <p className="text-gray-600 font-medium">Founder & Managing Director</p>
+              </div>
               
-              <div className="flex items-center justify-center mt-6 border-t pt-4">
-                <div className="flex items-center text-sm text-gray-500">
-                  <svg className="w-4 h-4 mr-1 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                  </svg>
-                  <span>Secure booking, instant confirmation</span>
+              <div className="text-left space-y-4">
+                <p className="text-gray-700 leading-relaxed">
+                  "With over 15 years of experience in the travel industry, I founded Gautham Tours and Travels with a vision to make road travel comfortable, safe, and memorable for every passenger."
+                </p>
+                
+                <div className="bg-primary/5 p-4 rounded-lg">
+                  <h4 className="font-semibold text-primary mb-2">Our Mission</h4>
+                  <p className="text-sm text-gray-600">
+                    To provide exceptional chauffeur-driven services that exceed customer expectations while ensuring safety, comfort, and reliability on every journey.
+                  </p>
+                </div>
+                
+                <div className="flex items-center justify-center gap-4 pt-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">15+</div>
+                    <div className="text-xs text-gray-600">Years Experience</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">50+</div>
+                    <div className="text-xs text-gray-600">Vehicles</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">10K+</div>
+                    <div className="text-xs text-gray-600">Happy Customers</div>
+                  </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </section>
