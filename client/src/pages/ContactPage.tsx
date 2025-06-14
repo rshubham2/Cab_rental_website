@@ -1,9 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useMutation } from "@tanstack/react-query";
-import { insertContactSchema, insertBookingSchema } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Helmet } from "react-helmet";
@@ -30,11 +28,25 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const contactFormSchema = insertContactSchema;
-const bookingFormSchema = insertBookingSchema.extend({
+const contactFormSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Valid phone number is required"),
+  subject: z.string().min(1, "Subject is required"),
+  message: z.string().min(1, "Message is required"),
+});
+
+const bookingFormSchema = z.object({
+  tripType: z.string().min(1, "Trip type is required"),
+  from: z.string().min(1, "From location is required"),
+  to: z.string().min(1, "Destination is required"),
   startDate: z.string().min(1, "Start date is required"),
   returnDate: z.string().optional(),
+  carType: z.string().min(1, "Car type is required"),
+  contactNumber: z.string().min(10, "Valid contact number is required"),
   email: z.string().email("Please enter a valid email address").optional(),
+  driverLanguage: z.string().optional(),
+  additionalRequirements: z.string().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -42,6 +54,8 @@ type BookingFormValues = z.infer<typeof bookingFormSchema>;
 
 const ContactPage = () => {
   const { toast } = useToast();
+  const [isContactSubmitting, setIsContactSubmitting] = useState(false);
+  const [isBookingSubmitting, setIsBookingSubmitting] = useState(false);
 
   const contactForm = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -70,54 +84,68 @@ const ContactPage = () => {
     },
   });
 
-  const contactMutation = useMutation({
-    mutationFn: async (values: ContactFormValues) => {
-      const response = await apiRequest("POST", "/api/contact", values);
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message Sent",
-        description: "Your message has been successfully sent. We'll get back to you shortly.",
+  async function onContactSubmit(values: ContactFormValues) {
+    setIsContactSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
       });
-      contactForm.reset();
-    },
-    onError: (error) => {
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent",
+          description: "Your message has been successfully sent. We'll get back to you shortly.",
+        });
+        contactForm.reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
       toast({
         variant: "destructive",
         title: "Error",
-        description: error instanceof Error ? error.message : "Failed to send message.",
+        description: "Failed to send message. Please try again.",
       });
-    },
-  });
-
-  const bookingMutation = useMutation({
-    mutationFn: async (values: BookingFormValues) => {
-      const response = await apiRequest("POST", "/api/bookings", values);
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Booking Submitted",
-        description: "Your booking request has been successfully submitted. We'll contact you shortly.",
-      });
-      bookingForm.reset();
-    },
-    onError: (error) => {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to submit booking request.",
-      });
-    },
-  });
-
-  function onContactSubmit(values: ContactFormValues) {
-    contactMutation.mutate(values);
+    } finally {
+      setIsContactSubmitting(false);
+    }
   }
 
-  function onBookingSubmit(values: BookingFormValues) {
-    bookingMutation.mutate(values);
+  async function onBookingSubmit(values: BookingFormValues) {
+    setIsBookingSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Booking Submitted",
+          description: "Your booking request has been successfully submitted. We'll contact you shortly.",
+        });
+        bookingForm.reset();
+      } else {
+        throw new Error('Failed to submit booking');
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to submit booking request. Please try again.",
+      });
+    } finally {
+      setIsBookingSubmitting(false);
+    }
   }
 
   return (
@@ -333,9 +361,9 @@ const ContactPage = () => {
                         <Button
                           type="submit"
                           className="w-full bg-primary hover:bg-primary/90 text-white"
-                          disabled={contactMutation.isPending}
+                          disabled={isContactSubmitting}
                         >
-                          {contactMutation.isPending ? "Sending..." : "Send Message"}
+                          {isContactSubmitting ? "Sending..." : "Send Message"}
                         </Button>
                       </form>
                     </Form>
@@ -457,9 +485,9 @@ const ContactPage = () => {
                         <Button
                           type="submit"
                           className="w-full bg-primary hover:bg-primary/90 text-white"
-                          disabled={bookingMutation.isPending}
+                          disabled={isBookingSubmitting}
                         >
-                          {bookingMutation.isPending ? "Submitting..." : "Book Now"}
+                          {isBookingSubmitting ? "Submitting..." : "Book Now"}
                         </Button>
                       </form>
                     </Form>
