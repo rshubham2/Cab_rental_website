@@ -1,9 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useMutation } from "@tanstack/react-query";
-import { insertBookingSchema } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet";
 
@@ -28,16 +26,24 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const bookingFormSchema = insertBookingSchema.extend({
+const bookingFormSchema = z.object({
+  tripType: z.string().min(1, "Trip type is required"),
+  from: z.string().min(1, "From location is required"),
+  to: z.string().min(1, "Destination is required"),
   startDate: z.string().min(1, "Start date is required"),
   returnDate: z.string().optional(),
+  carType: z.string().min(1, "Car type is required"),
+  contactNumber: z.string().min(10, "Valid contact number is required"),
   email: z.string().email("Please enter a valid email address").optional(),
+  driverLanguage: z.string().optional(),
+  additionalRequirements: z.string().optional(),
 });
 
 type BookingFormValues = z.infer<typeof bookingFormSchema>;
 
 const BookingForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingFormSchema),
@@ -55,29 +61,36 @@ const BookingForm = () => {
     },
   });
 
-  const mutation = useMutation({
-    mutationFn: async (values: BookingFormValues) => {
-      const response = await apiRequest("POST", "/api/bookings", values);
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Booking Submitted",
-        description: "Your booking request has been successfully submitted. We'll contact you shortly.",
+  async function onSubmit(values: BookingFormValues) {
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
       });
-      form.reset();
-    },
-    onError: (error) => {
+
+      if (response.ok) {
+        toast({
+          title: "Booking Submitted",
+          description: "Your booking request has been successfully submitted. We'll contact you shortly.",
+        });
+        form.reset();
+      } else {
+        throw new Error('Failed to submit booking');
+      }
+    } catch (error) {
       toast({
         variant: "destructive",
         title: "Error",
-        description: error instanceof Error ? error.message : "Failed to submit booking request.",
+        description: "Failed to submit booking request. Please try again.",
       });
-    },
-  });
-
-  function onSubmit(values: BookingFormValues) {
-    mutation.mutate(values);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -299,9 +312,9 @@ const BookingForm = () => {
                 <Button 
                   type="submit" 
                   className="w-full bg-primary hover:bg-primary/90 text-white"
-                  disabled={mutation.isPending}
+                  disabled={isSubmitting}
                 >
-                  {mutation.isPending ? "Submitting..." : "Book Instantly"}
+                  {isSubmitting ? "Submitting..." : "Book Instantly"}
                 </Button>
               </form>
             </Form>

@@ -11,16 +11,16 @@ const CTA = () => {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link href="/booking">
-            <a className="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-8 rounded-lg transition shadow-lg inline-block">
+            <span className="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-8 rounded-lg transition shadow-lg inline-block cursor-pointer">
               Book Your Cab Now
-            </a>
+            </span>
           </Link>
           <a 
-            href="tel:9045450000" 
+            href="tel:9833401900" 
             className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-medium py-3 px-8 rounded-lg transition shadow-lg flex items-center justify-center"
           >
             <Phone className="h-4 w-4 mr-2" />
-            Call 9045450000
+            Call 9833401900
           </a>
         </div>
       </div>
